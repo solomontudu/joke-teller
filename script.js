@@ -135,6 +135,7 @@ async function getJoke() {
     test(joke);
 
     audioElement.addEventListener("canplaythrough", audioElement.play);
+    button.disabled = true;
   } catch (error) {
     console.log(error);
   }
@@ -143,4 +144,8 @@ async function getJoke() {
 // on load
 button.addEventListener("click", () => {
   getJoke();
+});
+
+audioElement.addEventListener("ended", () => {
+  button.disabled = false;
 });
